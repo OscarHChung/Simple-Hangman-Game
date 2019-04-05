@@ -14,6 +14,7 @@ print("Welcome to the Hangman Game.  You will have to guess the hidden word repr
 while chances > 0:
 
     failed = 0
+    
     out = ""
     for letter in secret_word:
         if letter in guessed:
@@ -42,7 +43,6 @@ while chances > 0:
         wrong.append(guess)
     print("")
 
-print("")
 print("")
 if chances:
     print("You guessed the word! The word was " + secret_word + ".")
