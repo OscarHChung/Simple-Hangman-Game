@@ -6,19 +6,22 @@ secret_word = random.choice(bunchofwords)
 chances = int(len(secret_word) + 2)
 guessed = []
 wrong = []
-go = True
 
 print("Welcome to the Hangman Game.  You will have to guess the hidden word represented by the underscores.  "
       "You get as many chance as letters in the word plus 2.  Good Luck!")
 
-while chances > 0 and go:
+while chances > 0:
 
+    failed = 0
     out = ""
     for letter in secret_word:
         if letter in guessed:
             out = out + letter
         else:
             out = out + "_ "
+            failed = failed + 1
+    if failed==0:
+      break
 
     print("The word: " + out)
     print("You have already guessed: " + str(wrong))
@@ -30,14 +33,6 @@ while chances > 0 and go:
     elif guess in secret_word:
         print("Nice guess!")
         guessed.append(guess)
-
-        if out == secret_word:
-            go = False
-        else:
-            pass
-
-    elif guess == secret_word:
-        go = False
     else:
         print("Sorry, that's not in the word.")
         chances = chances - 1
